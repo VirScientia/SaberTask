@@ -1,0 +1,3 @@
+# SQL1.1
+SELECT SUBSTR(issue_key, 1 , INSTR(issue_key,'-')-1) as _group, ROUND(AVG(minutes_in_status)/60, 2) as _count FROM 'history' WHERE status='Open' GROUP BY SUBSTR(issue_key, 1 , INSTR(issue_key,'-')-1)
+# SQL1.2
