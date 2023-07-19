@@ -8,3 +8,15 @@ SELECT
         ORDER BY issue_key
         ) AS _count
 FROM history WHERE status = 'Open'
+
+#SQL1.2
+SELECT 
+	SUBSTR(issue_key, 1 , INSTR(issue_key,'-')-1) as _group, 
+   ROUND(AVG(_sum)/60, 2) as _count 
+FROM (SELECT
+		*,
+    	SUM(minutes_in_status) as _sum
+	FROM history
+	WHERE status='Open'
+	GROUP BY issue_key)
+GROUP BY SUBSTR(issue_key, 1 , INSTR(issue_key,'-')-1)
