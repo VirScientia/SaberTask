@@ -20,3 +20,5 @@ FROM (SELECT
 	WHERE status='Open'
 	GROUP BY issue_key)
 GROUP BY SUBSTR(issue_key, 1 , INSTR(issue_key,'-')-1)
+
+#SQL2
