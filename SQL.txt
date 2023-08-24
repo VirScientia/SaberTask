@@ -22,3 +22,4 @@ FROM (SELECT
 GROUP BY SUBSTR(issue_key, 1 , INSTR(issue_key,'-')-1)
 
 #SQL2
+New SQL
