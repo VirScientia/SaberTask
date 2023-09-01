@@ -25,15 +25,27 @@ def _parse_args():
     parser.add_argument(
         '-o', '--output',
         action='store',
-        default='1',
         dest='output_dir',
         type=str,
-        help='',
+        help='path to new merged log file',
     )
 
-    #return parser.parse_args()
-    return parser
+    
 
+    return parser.parse_args()
+
+
+def _create_dir(dir_path: Path, *, force_write: bool = False) -> None:
+    if dir_path.exists():
+        if not force_write:
+            raise FileExistsError(
+                f'Dir "{dir_path}" already exists. Remove it first or choose another one.')
+        shutil.rmtree(dir_path)
+
+    dir_path.mkdir(parents=True)
+
+
+def _create_new_log():
 
 if __name__ == "__main__":
-    print(_parse_args()._actions)
+    print()
